@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="emailTextField" layoutX="457.0" layoutY="299.0" />
+      <TextField fx:id="lastNameTextField" layoutX="457.0" layoutY="242.0" />
+      <TextField fx:id="firstNameTextField" layoutX="457.0" layoutY="183.0" />
+      <TextField fx:id="birthTextField" layoutX="457.0" layoutY="357.0" />
+      <TextField fx:id="zipTextField" layoutX="457.0" layoutY="417.0" />
+      <Label layoutX="296.0" layoutY="188.0" text="First Name" />
+      <Label layoutX="296.0" layoutY="247.0" text="Last Name" />
+      <Label layoutX="297.0" layoutY="304.0" text="Email" />
+      <Label layoutX="297.0" layoutY="362.0" text="Date of Birth" />
+      <Label layoutX="296.0" layoutY="422.0" text="Zip Code" />
+      <Label layoutX="229.0" layoutY="24.0" text="REGISTRATION FORM">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Label>
+      <Button fx:id="registerBtn" layoutX="469.0" layoutY="495.0" mnemonicParsing="false" onAction="#registerOnAction" text="Click Here to Register" />
+   </children>
+</AnchorPane>
