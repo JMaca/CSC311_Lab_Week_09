@@ -38,7 +38,7 @@
             <Font size="50.0" />
          </font>
       </Label>
-      <Button fx:id="registerBtn" layoutX="340.0" layoutY="499.0" mnemonicParsing="false" onAction="#registerOnAction" text="Click Here to Register" />
+      <Button fx:id="registerBtn" disable="true" layoutX="340.0" layoutY="499.0" mnemonicParsing="false" onAction="#registerOnAction" text="Click Here to Register" />
       <Label fx:id="lastNameErrorLabel" focusTraversable="false" layoutX="507.0" layoutY="229.0" prefHeight="55.0" prefWidth="300.0" wrapText="true" />
       <Label fx:id="birthErrorLabel" focusTraversable="false" layoutX="507.0" layoutY="344.0" prefHeight="55.0" prefWidth="300.0" wrapText="true" />
       <Label fx:id="emailErrorLabel" focusTraversable="false" layoutX="507.0" layoutY="286.0" prefHeight="55.0" prefWidth="300.0" wrapText="true" />

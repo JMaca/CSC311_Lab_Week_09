@@ -1,11 +1,15 @@
 package registration_app.maca_lab_wk_09;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class RegistrationController {
     @FXML
@@ -13,16 +17,19 @@ public class RegistrationController {
     @FXML
     private Label firstNameErrorLabel, lastNameErrorLabel, emailErrorLabel, birthErrorLabel, zipErrorLabel;
     @FXML
-    private AnchorPane anchorPane;
-    private String firstName, lastName, email;
-    private int birthDate, zipCode;
     private boolean firstNameFlag = false, lastNameFlag = false, emailFlag = false, birthFlag = false, zipFlag = false;
+    @FXML
+    private Button registerBtn;
 
     @FXML
     protected void registerOnAction() {
         try {
             if (!(firstNameFlag || lastNameFlag || emailFlag || birthFlag || zipFlag)) { //if all fields have no true flags then proceed.
-                System.out.println("ALL FIELDS ARE CORRECT. PROCEEDING TO REGISTRATION.");
+                Parent root = FXMLLoader.load(getClass().getResource("/registration_app/maca_lab_wk_09/function.fxml").toURI().toURL());
+                Scene scene = new Scene(root);
+                Stage window = (Stage) firstNameTextField.getScene().getWindow();
+                window.setScene(scene);
+                window.show();
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("ERROR");
@@ -42,20 +49,20 @@ public class RegistrationController {
                 firstNameErrorLabel.setText("");
                 firstNameFlag = false;
             }
+            checkButtonDisable();
         });
         firstNameTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
             } else {
-                if (firstNameTextField.getText().matches("^[A-Za-z'\\s]{1,20}")) {
-                    System.out.println("First name Match!");
+                if (firstNameTextField.getText().matches("^[A-Za-z'\\s]{2,25}")) {
                     firstNameTextField.setBorder(null);
                 } else {
                     firstNameTextField.setStyle("-fx-border-color: red ; -fx-border-width: 4px ;");
-                    System.out.println("No First Name Match!");
-                    firstNameErrorLabel.setText(firstNameTextField.getText() + " is not valid first name\nPlease only use only letters, apostrophes, or spaces with a maximum of 20 characters");
+                    firstNameErrorLabel.setText(firstNameTextField.getText() + " is not valid first name\nPlease only use only letters, apostrophes, or spaces, with a minimum of 2 characters, maximum of 25 characters");
                     firstNameFlag = true;
                 }
             }
+            checkButtonDisable();
         });
         lastNameTextField.setOnKeyPressed(key -> {
             if (key.getCode() != KeyCode.TAB && lastNameFlag) {
@@ -63,20 +70,20 @@ public class RegistrationController {
                 lastNameErrorLabel.setText("");
                 lastNameFlag = false;
             }
+            checkButtonDisable();
         });
         lastNameTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
             } else {
-                if (lastNameTextField.getText().matches("^[A-Za-z'\\s]{1,20}")) {
-                    System.out.println("last name Match!");
+                if (lastNameTextField.getText().matches("^[A-Za-z'\\s]{2,25}")) {
                     lastNameTextField.setBorder(null);
                 } else {
                     lastNameTextField.setStyle("-fx-border-color: red ; -fx-border-width: 4px ;");
-                    System.out.println("No last name Match!");
-                    lastNameErrorLabel.setText(lastNameTextField.getText() + " is not valid last name\nPlease only use only letters, apostrophes, or spaces with a maximum of 20 characters");
+                    lastNameErrorLabel.setText(lastNameTextField.getText() + " is not valid last name\nPlease only use only letters, apostrophes, or spaces, with a minimum of 2 characters, maximum of 20 characters");
                     lastNameFlag = true;
                 }
             }
+            checkButtonDisable();
         });
         emailTextField.setOnKeyPressed(key -> {
             if (key.getCode() != KeyCode.TAB && emailFlag) {
@@ -84,20 +91,20 @@ public class RegistrationController {
                 emailErrorLabel.setText("");
                 emailFlag = false;
             }
+            checkButtonDisable();
         });
         emailTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
             } else {
-                if (emailTextField.getText().matches("^(.+)@(\\S+)$")) {
-                    System.out.println("email Match!");
+                if (emailTextField.getText().matches("^(.+)@farmingdale.edu$")) {
                     emailTextField.setBorder(null);
                 } else {
                     emailTextField.setStyle("-fx-border-color: red ; -fx-border-width: 4px ;");
-                    System.out.println("No email Match!");
-                    emailErrorLabel.setText(emailTextField.getText() + " is not valid email\nMust include an \'@\' and \'.\'");
+                    emailErrorLabel.setText(emailTextField.getText() + " is not valid email\nMust include an \'@farmingdale.edu\'");
                     emailFlag = true;
                 }
             }
+            checkButtonDisable();
         });
         birthTextField.setOnKeyPressed(key -> {
             if (key.getCode() != KeyCode.TAB && birthFlag) {
@@ -105,20 +112,21 @@ public class RegistrationController {
                 birthErrorLabel.setText("");
                 birthFlag = false;
             }
+            checkButtonDisable();
         });
         birthTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
             } else {
-                if (birthTextField.getText().matches("^[0-9\\/]{8,10}")) {
-                    System.out.println("birth Match!");
+                if (birthTextField.getText().matches("^(0[0-9]||1[0-2])\\/([0-2][0-9]||3[0-1])\\/([0-9][0-9])?[0-9][0-9]$")) { // Strict regex for only MM/DD/YYYY
                     birthTextField.setBorder(null);
                 } else {
                     birthTextField.setStyle("-fx-border-color: red ; -fx-border-width: 4px ;");
-                    System.out.println("No birth Match!");
-                    birthErrorLabel.setText(birthTextField.getText() + " is not valid birthdate\nPlease only use numbers with a slash(EX: 00/00/0000) maximum of 10 characters");
+
+                    birthErrorLabel.setText(birthTextField.getText() + " is not valid birthdate\nPlease only use numbers with a slash separating each EX:MM/DD/YYYY");
                     birthFlag = true;
                 }
             }
+            checkButtonDisable();
         });
         zipTextField.setOnKeyPressed(key -> {
             if (key.getCode() != KeyCode.TAB && zipFlag) {
@@ -126,20 +134,28 @@ public class RegistrationController {
                 zipErrorLabel.setText("");
                 zipFlag = false;
             }
+            checkButtonDisable();
         });
         zipTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
             } else {
                 if (zipTextField.getText().matches("^[0-9]{5}")) {
-                    System.out.println("zip Match!");
                     zipTextField.setBorder(null);
                 } else {
                     zipTextField.setStyle("-fx-border-color: red ; -fx-border-width: 4px ;");
-                    System.out.println("No zip Match!");
                     zipErrorLabel.setText(zipTextField.getText() + " is not valid zipcode\nPlease only use numbers with a maximum of 5 characters");
                     zipFlag = true;
                 }
             }
+            checkButtonDisable();
         });
+    }
+
+    private void checkButtonDisable() { //Checks for flags in order to disable or enable register button
+        if (!(firstNameFlag || lastNameFlag || emailFlag || birthFlag || zipFlag)) {
+            registerBtn.setDisable(false);
+        } else {
+            registerBtn.setDisable(true);
+        }
     }
 }

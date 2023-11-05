@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="registration_app.maca_lab_wk_09.FunctionController">
+   <children>
+      <Label alignment="CENTER" layoutX="41.0" layoutY="27.0" prefHeight="54.0" prefWidth="504.0" text="Thank You for registering">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_LEFT" layoutX="103.0" layoutY="110.0" prefHeight="179.0" prefWidth="394.0" text="Your business is always appreciated. We will contact you via email for any further updates. Have a great day." wrapText="true">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Button fx:id="exitBtn" layoutX="247.0" layoutY="325.0" mnemonicParsing="false" onAction="#exitOnAction" prefHeight="26.0" prefWidth="106.0" text="EXIT" />
+   </children>
+</AnchorPane>
