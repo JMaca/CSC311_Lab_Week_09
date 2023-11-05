@@ -11,6 +11,19 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
+/**
+ * This is the Registration Controller class.
+ * <p>
+ * The tasks performed by the class are:
+ * <ul>
+ * <li>Runs a listener to check each field for correct input through regex expressions.
+ * <li>When all fields are correct it enables the registration button to be clicked
+ * <li>Clicking the registration will complete the process and move to follow-up page.
+ * </ul>
+ *
+ * @author John Maca
+ */
+
 public class RegistrationController {
     @FXML
     private TextField firstNameTextField, lastNameTextField, emailTextField, birthTextField, zipTextField;
@@ -31,7 +44,7 @@ public class RegistrationController {
                 window.setScene(scene);
                 window.show();
             } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
+                Alert alert = new Alert(Alert.AlertType.ERROR); // With the checkButtonDisable method this alert should not come up.
                 alert.setTitle("ERROR");
                 alert.setHeaderText("One or more fields may have an error.");
                 alert.setContentText("A field does not have the correct input , please review the form for errors before proceeding.");
@@ -42,6 +55,13 @@ public class RegistrationController {
         }
     }
 
+    /**
+     * This method runs listeners for each text-field.
+     * Any input put into each text-field is validated through regex expressions.
+     * If any input has errors, then an error message will appear along with a red border around the incorrect field.
+     * The error will trigger a specific flag to the "true" value.
+     * The flags will be checked through the checkButtonDisable method.
+     */
     public void initialize() {
         firstNameTextField.setOnKeyPressed(key -> {
             if (key.getCode() != KeyCode.TAB && firstNameFlag) {
@@ -151,6 +171,11 @@ public class RegistrationController {
         });
     }
 
+    /**
+     * This method checks all tags for each field.
+     * If no errors then it will proceed to change the registerBtn to be clickable.
+     * This method requires no input and does not return any value.
+     */
     private void checkButtonDisable() { //Checks for flags in order to disable or enable register button
         if (!(firstNameFlag || lastNameFlag || emailFlag || birthFlag || zipFlag)) {
             registerBtn.setDisable(false);

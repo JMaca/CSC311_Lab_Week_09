@@ -7,7 +7,19 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * This is a registration app.
+ * <p>
+ * This app provides a simple registration form GUI with validation for every input through regex expressions.
+ *
+ * @author John Maca
+ */
+
 public class App extends Application {
+    public static void main(String[] args) {
+        launch();
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("registration.fxml"));
@@ -15,9 +27,5 @@ public class App extends Application {
         stage.setTitle("Registration!");
         stage.setScene(scene);
         stage.show();
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 }
