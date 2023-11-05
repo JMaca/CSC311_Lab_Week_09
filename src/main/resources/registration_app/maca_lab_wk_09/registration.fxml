@@ -1,31 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="registration_app.maca_lab_wk_09.RegistrationController">
    <children>
-      <TextField fx:id="emailTextField" layoutX="457.0" layoutY="299.0" />
-      <TextField fx:id="lastNameTextField" layoutX="457.0" layoutY="242.0" />
-      <TextField fx:id="firstNameTextField" layoutX="457.0" layoutY="183.0" />
-      <TextField fx:id="birthTextField" layoutX="457.0" layoutY="357.0" />
-      <TextField fx:id="zipTextField" layoutX="457.0" layoutY="417.0" />
-      <Label layoutX="296.0" layoutY="188.0" text="First Name" />
-      <Label layoutX="296.0" layoutY="247.0" text="Last Name" />
-      <Label layoutX="297.0" layoutY="304.0" text="Email" />
-      <Label layoutX="297.0" layoutY="362.0" text="Date of Birth" />
-      <Label layoutX="296.0" layoutY="422.0" text="Zip Code" />
-      <Label layoutX="229.0" layoutY="24.0" text="REGISTRATION FORM">
+      <TextField fx:id="firstNameTextField" layoutX="237.0" layoutY="184.0" prefHeight="30.0" prefWidth="214.0" />
+      <TextField fx:id="lastNameTextField" layoutX="237.0" layoutY="243.0" prefHeight="30.0" prefWidth="214.0" />
+      <TextField fx:id="emailTextField" layoutX="237.0" layoutY="300.0" prefHeight="30.0" prefWidth="214.0" />
+      <TextField fx:id="birthTextField" layoutX="237.0" layoutY="358.0" prefHeight="30.0" prefWidth="214.0" />
+      <TextField fx:id="zipTextField" layoutX="237.0" layoutY="418.0" prefHeight="30.0" prefWidth="214.0" />
+      <Label focusTraversable="false" layoutX="158.0" layoutY="188.0" text="First Name">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label focusTraversable="false" layoutX="159.0" layoutY="247.0" text="Last Name">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label focusTraversable="false" layoutX="173.0" layoutY="307.0" text="Email">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label focusTraversable="false" layoutX="153.0" layoutY="362.0" text="Date of Birth">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label focusTraversable="false" layoutX="163.0" layoutY="422.0" text="Zip Code">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label focusTraversable="false" layoutX="229.0" layoutY="24.0" text="REGISTRATION FORM">
          <font>
             <Font size="50.0" />
          </font>
       </Label>
-      <Button fx:id="registerBtn" layoutX="469.0" layoutY="495.0" mnemonicParsing="false" onAction="#registerOnAction" text="Click Here to Register" />
+      <Button fx:id="registerBtn" layoutX="340.0" layoutY="499.0" mnemonicParsing="false" onAction="#registerOnAction" text="Click Here to Register" />
+      <Label fx:id="lastNameErrorLabel" focusTraversable="false" layoutX="507.0" layoutY="238.0" prefHeight="35.0" prefWidth="300.0" wrapText="true" />
+      <Label fx:id="birthErrorLabel" focusTraversable="false" layoutX="507.0" layoutY="352.0" prefHeight="35.0" prefWidth="300.0" wrapText="true" />
+      <Label fx:id="emailErrorLabel" focusTraversable="false" layoutX="507.0" layoutY="297.0" prefHeight="35.0" prefWidth="300.0" wrapText="true" />
+      <Label fx:id="zipErrorLabel" focusTraversable="false" layoutX="507.0" layoutY="412.0" prefHeight="35.0" prefWidth="300.0" wrapText="true" />
+      <Label fx:id="firstNameErrorLabel" focusTraversable="false" layoutX="507.0" layoutY="179.0" prefHeight="35.0" prefWidth="300.0" wrapText="true" />
    </children>
 </AnchorPane>
