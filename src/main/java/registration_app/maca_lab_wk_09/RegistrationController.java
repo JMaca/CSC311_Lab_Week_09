@@ -8,6 +8,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
@@ -33,6 +35,7 @@ public class RegistrationController {
     private boolean firstNameFlag = false, lastNameFlag = false, emailFlag = false, birthFlag = false, zipFlag = false;
     @FXML
     private Button registerBtn;
+    private Image icon = new Image(getClass().getResourceAsStream("/registration_app/maca_lab_wk_09/icons8-check-48.png"));
 
     @FXML
     protected void registerOnAction() {
@@ -66,7 +69,6 @@ public class RegistrationController {
         firstNameTextField.setOnKeyPressed(key -> {
             if (key.getCode() != KeyCode.TAB && firstNameFlag) {
                 firstNameTextField.setStyle("-fx-border-color: black ; -fx-border-width: 1px ;");
-                firstNameErrorLabel.setText("");
                 firstNameFlag = false;
             }
             checkButtonDisable();
@@ -75,9 +77,12 @@ public class RegistrationController {
             if (newValue) {
             } else {
                 if (firstNameTextField.getText().matches("^[A-Za-z'\\s]{2,25}")) {
-                    firstNameTextField.setBorder(null);
+                    firstNameTextField.setStyle("-fx-border-color: green ; -fx-border-width: 4px ;");
+                    firstNameErrorLabel.setText("");
+                    firstNameErrorLabel.setGraphic(new ImageView(icon));
                 } else {
                     firstNameTextField.setStyle("-fx-border-color: red ; -fx-border-width: 4px ;");
+                    firstNameErrorLabel.setGraphic(null);
                     firstNameErrorLabel.setText(firstNameTextField.getText() + " is not valid first name\nPlease only use only letters, apostrophes, or spaces, with a minimum of 2 characters, maximum of 25 characters");
                     firstNameFlag = true;
                 }
@@ -87,7 +92,6 @@ public class RegistrationController {
         lastNameTextField.setOnKeyPressed(key -> {
             if (key.getCode() != KeyCode.TAB && lastNameFlag) {
                 lastNameTextField.setStyle("-fx-border-color: black ; -fx-border-width: 1px ;");
-                lastNameErrorLabel.setText("");
                 lastNameFlag = false;
             }
             checkButtonDisable();
@@ -96,9 +100,12 @@ public class RegistrationController {
             if (newValue) {
             } else {
                 if (lastNameTextField.getText().matches("^[A-Za-z'\\s]{2,25}")) {
-                    lastNameTextField.setBorder(null);
+                    lastNameTextField.setStyle("-fx-border-color: green ; -fx-border-width: 4px ;");
+                    lastNameErrorLabel.setText("");
+                    lastNameErrorLabel.setGraphic(new ImageView(icon));
                 } else {
                     lastNameTextField.setStyle("-fx-border-color: red ; -fx-border-width: 4px ;");
+                    lastNameErrorLabel.setGraphic(null);
                     lastNameErrorLabel.setText(lastNameTextField.getText() + " is not valid last name\nPlease only use only letters, apostrophes, or spaces, with a minimum of 2 characters, maximum of 20 characters");
                     lastNameFlag = true;
                 }
@@ -108,7 +115,6 @@ public class RegistrationController {
         emailTextField.setOnKeyPressed(key -> {
             if (key.getCode() != KeyCode.TAB && emailFlag) {
                 emailTextField.setStyle("-fx-border-color: black ; -fx-border-width: 1px ;");
-                emailErrorLabel.setText("");
                 emailFlag = false;
             }
             checkButtonDisable();
@@ -117,9 +123,12 @@ public class RegistrationController {
             if (newValue) {
             } else {
                 if (emailTextField.getText().matches("^(.+)@farmingdale.edu$")) {
-                    emailTextField.setBorder(null);
+                    emailTextField.setStyle("-fx-border-color: green ; -fx-border-width: 4px ;");
+                    emailErrorLabel.setText("");
+                    emailErrorLabel.setGraphic(new ImageView(icon));
                 } else {
                     emailTextField.setStyle("-fx-border-color: red ; -fx-border-width: 4px ;");
+                    emailErrorLabel.setGraphic(null);
                     emailErrorLabel.setText(emailTextField.getText() + " is not valid email\nMust include an \'@farmingdale.edu\'");
                     emailFlag = true;
                 }
@@ -129,7 +138,6 @@ public class RegistrationController {
         birthTextField.setOnKeyPressed(key -> {
             if (key.getCode() != KeyCode.TAB && birthFlag) {
                 birthTextField.setStyle("-fx-border-color: black ; -fx-border-width: 1px ;");
-                birthErrorLabel.setText("");
                 birthFlag = false;
             }
             checkButtonDisable();
@@ -138,10 +146,12 @@ public class RegistrationController {
             if (newValue) {
             } else {
                 if (birthTextField.getText().matches("^(0[0-9]||1[0-2])\\/([0-2][0-9]||3[0-1])\\/([0-9][0-9])?[0-9][0-9]$")) { // Strict regex for only MM/DD/YYYY
-                    birthTextField.setBorder(null);
+                    birthTextField.setStyle("-fx-border-color: green ; -fx-border-width: 4px ;");
+                    birthErrorLabel.setText("");
+                    birthErrorLabel.setGraphic(new ImageView(icon));
                 } else {
                     birthTextField.setStyle("-fx-border-color: red ; -fx-border-width: 4px ;");
-
+                    birthErrorLabel.setGraphic(null);
                     birthErrorLabel.setText(birthTextField.getText() + " is not valid birthdate\nPlease only use numbers with a slash separating each EX:MM/DD/YYYY");
                     birthFlag = true;
                 }
@@ -151,7 +161,6 @@ public class RegistrationController {
         zipTextField.setOnKeyPressed(key -> {
             if (key.getCode() != KeyCode.TAB && zipFlag) {
                 zipTextField.setStyle("-fx-border-color: black ; -fx-border-width: 1px ;");
-                zipErrorLabel.setText("");
                 zipFlag = false;
             }
             checkButtonDisable();
@@ -160,9 +169,12 @@ public class RegistrationController {
             if (newValue) {
             } else {
                 if (zipTextField.getText().matches("^[0-9]{5}")) {
-                    zipTextField.setBorder(null);
+                    zipTextField.setStyle("-fx-border-color: green ; -fx-border-width: 4px ;");
+                    zipErrorLabel.setText("");
+                    zipErrorLabel.setGraphic(new ImageView(icon));
                 } else {
                     zipTextField.setStyle("-fx-border-color: red ; -fx-border-width: 4px ;");
+                    zipErrorLabel.setGraphic(null);
                     zipErrorLabel.setText(zipTextField.getText() + " is not valid zipcode\nPlease only use numbers with a maximum of 5 characters");
                     zipFlag = true;
                 }
